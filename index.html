@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5268e8">
+<title>AI Balance — кабинет учителя</title>
+<link rel="icon" type="image/png" href="assets/ai_balance_app_icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="login-screen" class="login-wrap">
+  <div class="login-brand"><img src="assets/ai_balance_app_icon.png" alt="AI Balance"><div><b>AI Balance</b><small>Интеллектуальная поддержка учителя</small></div></div>
+  <section class="login-card">
+    <div class="mascot-stage login-mascot" aria-label="Жонглёр на колесе">
+      <div class="orbit orbit-one"><span class="obj globe">🌍</span></div>
+      <div class="orbit orbit-two"><span class="obj atom">⚛️</span></div>
+      <div class="orbit orbit-three"><span class="obj chart">📈</span></div>
+      <div class="orbit orbit-four"><span class="obj books">📚</span></div>
+      <div class="orbit orbit-five"><span class="obj computer">🖥️</span></div>
+      <div class="juggler">
+        <div class="head"><span class="hair"></span><span class="face">●</span></div>
+        <div class="body"><span class="vest"></span><span class="arm arm-left"></span><span class="arm arm-right"></span></div>
+        <div class="legs"><span class="leg leg-left"></span><span class="leg leg-right"></span></div>
+      </div>
+      <div class="unicycle"><div class="tire"><i></i></div><span class="fork"></span><span class="pedal p1"></span><span class="pedal p2"></span></div>
+    </div>
+    <h1>Добро пожаловать!</h1><p class="muted center">Войдите в тестовый кабинет AI Balance</p>
+    <form id="login-form">
+      <label for="email">Электронная почта</label><input id="email" type="email" required placeholder="teacher@example.com">
+      <label for="access-code">Код доступа</label><input id="access-code" type="password" required placeholder="Введите код доступа">
+      <button class="btn primary wide" type="submit">Войти в приложение <span>→</span></button>
+      <p id="login-error" class="error" aria-live="polite"></p>
+    </form>
+    <div class="demo-code">Тестовый код доступа: <b>12345</b></div>
+  </section>
+  <p class="login-foot">Демонстрационный прототип · Данные хранятся в текущем браузере</p>
+</div>
+
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <a class="brand" href="#" data-page="overview"><img src="assets/ai_balance_app_icon.png" alt=""><span><b>AI Balance</b><small>TEACHER ANALYTICS</small></span></a>
+    <div class="nav-caption">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+    <nav>
+      <button class="nav-btn active" data-page="overview"><span>▦</span> Обзор</button>
+      <button class="nav-btn" data-page="catalog"><span>▤</span> Каталог задач</button>
+      <button class="nav-btn" data-page="analysis"><span>⌕</span> Анализ задачи</button>
+      <button class="nav-btn" data-page="library"><span>☷</span> Мои результаты</button>
+    </nav>
+    <div class="sidebar-note"><b>Человек + технологии</b><p>ИИ помогает справляться с рутиной, а учитель сохраняет контроль, профессиональное суждение и контакт с учениками.</p></div>
+    <button id="logout" class="logout">↪ Выйти</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">Рабочее пространство / <b id="crumb">Обзор</b></div><div class="user"><span id="user-email"></span><div class="avatar">У</div></div></header>
+
+    <section class="page active" id="page-overview">
+      <h1>Баланс возможностей ИИ</h1><p class="subtitle">Оцените профессиональные задачи и найдите подходящие сценарии работы с искусственным интеллектом.</p>
+      <div class="hero"><div><h2>Не заменять учителя. Помогать ему.</h2><p>AI Balance показывает, какие операции можно автоматизировать, где ИИ станет помощником, а где особенно важны опыт и решение педагога.</p></div><button class="btn light" data-goto="catalog">Открыть каталог задач →</button></div>
+      <div class="stats">
+        <div class="stat"><small>Задач в библиотеке</small><strong id="stat-total">3</strong><span>сохранённые результаты</span></div>
+        <div class="stat"><small>Средний индекс</small><strong id="stat-average">49%</strong><span>потенциал автоматизации</span></div>
+        <div class="stat"><small>Поддержка ИИ</small><strong id="stat-assist">1</strong><span>задачи этой категории</span></div>
+        <div class="stat"><small>Решение человека</small><strong id="stat-human">1</strong><span>преимущественно человеческие</span></div>
+      </div>
+      <div class="overview-grid">
+        <section class="card"><div class="card-heading"><div><h3>Начать работу</h3><p>Выберите нужный инструмент</p></div></div>
+          <button class="launch-row" data-goto="catalog"><span class="launch-icon">▤</span><span><b>Каталог задач учителя</b><small>Предмет, класс, потребности и готовые сценарии</small></span><i>→</i></button>
+          <button class="launch-row" data-goto="analysis"><span class="launch-icon">⌕</span><span><b>Анализ профессиональной задачи</b><small>Оценка потенциала автоматизации по критериям</small></span><i>→</i></button>
+          <button class="launch-row" data-goto="library"><span class="launch-icon">☷</span><span><b>Мои результаты</b><small>Сохранённые оценки и рекомендации</small></span><i>→</i></button>
+        </section>
+        <section class="card"><h3>Три сценария</h3>
+          <div class="legend"><i class="dot auto"></i><div><b>Потенциальная автоматизация</b><small>Повторяемые операции с понятными правилами. Результат ИИ проверяет учитель.</small></div></div>
+          <div class="legend"><i class="dot assist"></i><div><b>Улучшение работы человека</b><small>ИИ предлагает черновики и варианты, итоговое решение за учителем.</small></div></div>
+          <div class="legend"><i class="dot human"></i><div><b>Преимущественно человек</b><small>Важны эмпатия, контекст, общение и профессиональная ответственность.</small></div></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-catalog">
+      <h1>Каталог задач учителя</h1><p class="subtitle">Укажите предмет, класс и потребность — приложение предложит варианты автоматизации и готовые запросы для ИИ.</p>
+      <div class="catalog-layout">
+        <section class="card">
+          <h3>Что нужно учителю?</h3>
+          <label for="subject">Школьный предмет</label><select id="subject">
+            <option>Математика</option><option>Русский язык</option><option>Литература</option><option>История</option><option>Обществознание</option><option>Физика</option><option>Химия</option><option>Биология</option><option>География</option><option>Информатика</option><option>Английский язык</option><option>Начальная школа</option><option>Другой предмет</option>
+          </select>
+          <label for="grade">Класс</label><select id="grade"><option>1 класс</option><option>2 класс</option><option>3 класс</option><option>4 класс</option><option>5 класс</option><option>6 класс</option><option>7 класс</option><option>8 класс</option><option>9 класс</option><option>10 класс</option><option>11 класс</option></select>
+          <label>Выберите задачу</label>
+          <div class="need-grid" id="need-grid">
+            <button class="need selected" data-need="Подготовить урок">📖 Подготовить урок</button><button class="need" data-need="Создать задания">✏️ Создать задания</button>
+            <button class="need" data-need="Проверить работы">✅ Проверить работы</button><button class="need" data-need="Подготовить тест">📝 Подготовить тест</button>
+            <button class="need" data-need="Объяснить тему">💡 Объяснить тему</button><button class="need" data-need="Подготовить отчёт">📊 Подготовить отчёт</button>
+            <button class="need" data-need="Дифференцировать задания">👥 Уровни сложности</button><button class="need" data-need="Подготовить материалы">📚 Материалы</button>
+          </div>
+          <label for="extra">Дополнительные пожелания</label><textarea id="extra" rows="3" placeholder="Например: тема — дроби, продолжительность урока — 45 минут"></textarea>
+          <button id="find-tasks" class="btn primary wide">Подобрать возможности ИИ →</button>
+        </section>
+        <section class="card results-card"><div class="card-heading"><div><h3>Рекомендации каталога</h3><p>Подходящие сценарии для выбранной задачи</p></div></div><div id="catalog-results" class="empty-state"><span>✦</span><b>Здесь появятся рекомендации</b><small>Выберите параметры слева и нажмите «Подобрать возможности ИИ».</small></div></section>
+      </div>
+    </section>
+
+    <section class="page" id="page-analysis">
+      <h1>Анализ профессиональной задачи</h1><p class="subtitle">Оцените характеристики работы. Индекс поможет определить подходящий формат взаимодействия с ИИ.</p>
+      <div class="analysis-layout">
+        <section class="card">
+          <label for="task-name">Название задачи</label><input id="task-name" placeholder="Например: подготовка проверочной работы">
+          <label for="task-category">Область работы</label><select id="task-category"><option>Подготовка к уроку</option><option>Проверка работ</option><option>Документация и отчётность</option><option>Работа с учениками</option><option>Коммуникация с родителями</option><option>Другое</option></select>
+          <label for="task-desc">Краткое описание</label><textarea id="task-desc" rows="3" placeholder="Что делает учитель и какой результат нужен?"></textarea>
+          <div class="range-block"><label for="repeat">Повторяемость <small>Насколько действия типовые?</small></label><div class="range-line"><input id="repeat" type="range" min="1" max="5" value="4"><output id="repeat-out">4</output></div><div class="range-labels"><span>Низкая</span><span>Высокая</span></div></div>
+          <div class="range-block"><label for="formal">Формализуемость <small>Можно ли задать чёткие правила?</small></label><div class="range-line"><input id="formal" type="range" min="1" max="5" value="4"><output id="formal-out">4</output></div><div class="range-labels"><span>Низкая</span><span>Высокая</span></div></div>
+          <div class="range-block"><label for="communication">Необходимость общения <small>Насколько важен живой контакт?</small></label><div class="range-line"><input id="communication" type="range" min="1" max="5" value="2"><output id="communication-out">2</output></div><div class="range-labels"><span>Низкая</span><span>Высокая</span></div></div>
+          <div class="range-block"><label for="creative">Творческий подход <small>Насколько важны оригинальность и контекст?</small></label><div class="range-line"><input id="creative" type="range" min="1" max="5" value="2"><output id="creative-out">2</output></div><div class="range-labels"><span>Низкий</span><span>Высокий</span></div></div>
+          <button id="calculate" class="btn primary wide">Рассчитать потенциал задачи →</button>
+        </section>
+        <section class="card" id="analysis-output"><div class="empty-state"><span>⌕</span><b>Результат анализа</b><small>Заполните параметры и рассчитайте индекс.</small></div></section>
+      </div>
+    </section>
+
+    <section class="page" id="page-library">
+      <h1>Мои результаты</h1><p class="subtitle">Сохранённые анализы и рекомендации по задачам.</p>
+      <section class="card"><div class="card-heading"><h3>Библиотека задач</h3><button id="export-csv" class="btn secondary">↓ Экспорт CSV</button></div><div class="table-wrap"><table><thead><tr><th>Задача</th><th>Область</th><th>Индекс</th><th>Сценарий</th><th></th></tr></thead><tbody id="library-body"></tbody></table></div></section>
+    </section>
+    <footer class="disclaimer">AI Balance — демонстрационный инструмент первичной оценки. Процент рассчитывается по заданной формуле и не является статистически подтверждённой вероятностью замены учителя. Не загружайте персональные данные учеников. Результаты ИИ требуют проверки педагогом.</footer>
+  </main>
+</div>
+
+<div id="transition-loader" class="transition-loader hidden" aria-live="polite">
+  <div class="loader-card">
+    <div class="mascot-stage">
+      <div class="orbit orbit-one"><span class="obj globe">🌍</span></div><div class="orbit orbit-two"><span class="obj atom">⚛️</span></div>
+      <div class="orbit orbit-three"><span class="obj chart">📈</span></div><div class="orbit orbit-four"><span class="obj books">📚</span></div><div class="orbit orbit-five"><span class="obj computer">🖥️</span></div>
+      <div class="juggler"><div class="head"><span class="hair"></span><span class="face">●</span></div><div class="body"><span class="vest"></span><span class="arm arm-left"></span><span class="arm arm-right"></span></div><div class="legs"><span class="leg leg-left"></span><span class="leg leg-right"></span></div></div>
+      <div class="unicycle"><div class="tire"><i></i></div><span class="fork"></span><span class="pedal p1"></span><span class="pedal p2"></span></div>
+    </div>
+    <b>AI Balance</b><small>Подготавливаем рабочее пространство…</small>
+  </div>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>
